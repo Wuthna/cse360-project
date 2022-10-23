@@ -3,7 +3,8 @@
 //package GUI;
 import java.awt.Color;
 import java.awt.event.ActionListener;
-
+import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
 import javax.swing.*;
 import javax.swing.JFrame;
 
@@ -18,6 +19,8 @@ public class homePage extends JFrame implements ActionListener{
 
     public String printMe = "PRINTED";
 
+    JButton chefButton = new JButton();
+    
     JButton cheeseButton    = new JButton();
     JButton pepperoniButton = new JButton();
     JButton veggieButton    = new JButton();
@@ -44,7 +47,11 @@ public class homePage extends JFrame implements ActionListener{
     
     homePage() { //creates frame instance
 
-    // PIZZA CHOICES
+        chefButton.setBounds(700, 20, 100, 50);
+        chefButton.addActionListener(this);
+        chefButton.setText("Chef");
+    
+        // PIZZA CHOICES
         //Cheese Pizza Button
         cheeseButton.setBounds(50,100,250,100);
         cheeseButton.addActionListener(this); 
@@ -111,6 +118,8 @@ public class homePage extends JFrame implements ActionListener{
         this.add(addToCartButton);
         this.add(menuTitle);
         
+        this.add(chefButton);//chef button tab
+
         //FRAME ATTRIBUTES//
         this.getContentPane().setBackground(SunDevilSilver); //sets background to maroon
         this.getContentPane().setLayout(null); //sets the layout to be absolute so you dont have to use panels
@@ -119,7 +128,16 @@ public class homePage extends JFrame implements ActionListener{
 
         @Override
         public void actionPerformed(java.awt.event.ActionEvent e) {
-        //Pizza Type Actions
+        
+        
+            if(e.getSource() == chefButton){
+                System.out.println("Chef Button Pressed");
+                chefPage chef = new chefPage();
+                this.dispose();
+            }
+        
+        
+            //Pizza Type Actions
             //CHEESE Pizza Button ACTIONS
             if (e.getSource() == cheeseButton && isCheese == false && !isPepperoni && !isVeggie){  //makes sure only one of the Pizzas can be selected at a time
                 isCheese = true;
