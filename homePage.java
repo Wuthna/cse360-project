@@ -11,10 +11,12 @@ import javax.swing.JFrame;
 
 public class homePage extends JFrame implements ActionListener{
 
-    Color SunDevilMaroon = new Color(0x8C1D40);
-    Color SunDevilGold   = new Color(0xFFC627);
-    Color SunDevilSilver = new Color(0x56575E);
-    Color SunDevilBlack  = new Color(0x303234);
+    public Color SunDevilMaroon = new Color(0x8C1D40);
+    public Color SunDevilGold   = new Color(0xFFC627);
+    public Color SunDevilSilver = new Color(0x56575E);
+    public Color SunDevilBlack  = new Color(0x303234);
+
+    public String printMe = "PRINTED";
 
     JButton cheeseButton    = new JButton();
     JButton pepperoniButton = new JButton();
@@ -25,8 +27,11 @@ public class homePage extends JFrame implements ActionListener{
     JButton olivesButton      = new JButton();
     JButton extracheeseButton = new JButton();
 
-    JButton checkoutButton = new JButton();
-    String customerOrder   = "ORDER =";
+    JButton addToCartButton = new JButton();
+    String addToCart       = "ORDER =";
+    public String foo_cart = "";
+
+    JLabel menuTitle = new JLabel();
 
     boolean isCheese    = false;
     boolean isPepperoni = false;
@@ -77,17 +82,23 @@ public class homePage extends JFrame implements ActionListener{
         extracheeseButton.addActionListener(this); 
         extracheeseButton.setText("EXTRA CHEESE");
 
-        checkoutButton.setBounds(300,500, 400, 120);
-        checkoutButton.addActionListener(this);
-        checkoutButton.setText("Check Out");
+        addToCartButton.setBounds(300,500, 400, 120);
+        addToCartButton.addActionListener(this);
+        addToCartButton.setText("Check Out");
+
+        menuTitle.setText("Menu");
+        menuTitle.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 40));
+        menuTitle.setForeground(Color.WHITE);
+        menuTitle.setBounds(30, 9, 100, 100);
 
         //FRAME LOGIC//
         this.setVisible(true); //makes frame visible
         this.setTitle("PIZZA TIME"); //sets title
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //sets exit to close app
-        this.setResizable(true); //makes HUI ajustable
+        this.setResizable(false); //makes HUI ajustable
         this.setSize(1000,700); //setse starting dimentions
         this.setLocationRelativeTo(null); //When opened, opens in center of screen
+        
         this.add(cheeseButton);
         this.add(pepperoniButton);
         this.add(veggieButton);
@@ -97,7 +108,8 @@ public class homePage extends JFrame implements ActionListener{
         this.add(olivesButton);
         this.add(extracheeseButton);
 
-        this.add(checkoutButton);
+        this.add(addToCartButton);
+        this.add(menuTitle);
         
         //FRAME ATTRIBUTES//
         this.getContentPane().setBackground(SunDevilSilver); //sets background to maroon
@@ -170,34 +182,38 @@ public class homePage extends JFrame implements ActionListener{
             }
 
         
-            //Checkout Button
-            if (e.getSource() == checkoutButton){
+            //ADD TO CART Button
+            if (e.getSource() == addToCartButton){
                
-
                 //go throught all options to see if theyre in the order
 
                 if(isCheese){
-                    customerOrder += " Cheese Pizza with ";
+                    addToCart += " Cheese Pizza with ";
                 }
                 if (isPepperoni){
-                    customerOrder += " Pepperoni Pizza with ";
+                    addToCart += " Pepperoni Pizza with ";
                 }
                 if (isVeggie){
-                    customerOrder += " Veggie Pizza with ";
+                    addToCart += " Veggie Pizza with ";
                 }
                 if (isMusroom){
-                    customerOrder += " Mushrooms, ";
+                    addToCart += " Mushrooms, ";
                 }
                 if (isOnions){
-                    customerOrder += " Onions, ";
+                    addToCart += " Onions, ";
                 }
                 if (isOlives){
-                    customerOrder += " Olives, ";
+                    addToCart += " Olives, ";
                 }
                 if (isExtraCheese){
-                    customerOrder += " Extra Cheese ";
+                    addToCart += " Extra Cheese ";
                 }
-                System.out.println(customerOrder);
+                System.out.println(addToCart); //prints the cart
+                foo_cart = addToCart;
+                System.out.println("foo cart" + foo_cart);
+                addToCart = ""; //clears the order so you dont get it incrimented
+                this.dispose();
+                cartPage newCart = new cartPage();//OPENES CART Window
 
         }
     }
