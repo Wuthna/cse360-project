@@ -28,6 +28,9 @@ public class homePage extends JFrame implements ActionListener{
     JButton checkoutButton = new JButton();
     String customerOrder   = "ORDER =";
 
+    JButton STUDENT_ID_Button= new JButton("verify student id"); //verify the student id is 10 digits long
+    JFrame frame = new JFrame();
+   
     boolean isCheese    = false;
     boolean isPepperoni = false;
     boolean isVeggie    = false;
@@ -38,6 +41,13 @@ public class homePage extends JFrame implements ActionListener{
     boolean isExtraCheese = false;
     
     homePage() { //creates frame instance
+        //student id button goes to checkin page
+        STUDENT_ID_Button.setBounds(10,20,150,50);
+        //STUDENT_ID_Button.setFocusable(false);
+        STUDENT_ID_Button.addActionListener(this);
+        STUDENT_ID_Button.setText("student id");
+
+
 
     // PIZZA CHOICES
         //Cheese Pizza Button
@@ -98,7 +108,7 @@ public class homePage extends JFrame implements ActionListener{
         this.add(extracheeseButton);
 
         this.add(checkoutButton);
-        
+        this.add(STUDENT_ID_Button);
         //FRAME ATTRIBUTES//
         this.getContentPane().setBackground(SunDevilSilver); //sets background to maroon
         this.getContentPane().setLayout(null); //sets the layout to be absolute so you dont have to use panels
@@ -107,6 +117,13 @@ public class homePage extends JFrame implements ActionListener{
 
         @Override
         public void actionPerformed(java.awt.event.ActionEvent e) {
+        
+            if(e.getSource() == STUDENT_ID_Button){
+                System.out.println("Student ID button pressed");
+                //this.dispose();
+                StudentID STUDENTwindow = new StudentID();
+            }
+        
         //Pizza Type Actions
             //CHEESE Pizza Button ACTIONS
             if (e.getSource() == cheeseButton && isCheese == false && !isPepperoni && !isVeggie){  //makes sure only one of the Pizzas can be selected at a time
