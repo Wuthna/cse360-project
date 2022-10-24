@@ -55,7 +55,7 @@ public class orderProcessingPage extends homePage implements ActionListener{
         orderProcessingPage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //sets exit to close app
         orderProcessingPage.setResizable(false); //makes GUI ajustable
         orderProcessingPage.setSize(700,400); //setse starting dimentions
-       // orderProcessingPage.setLocationRelativeTo(null); //When opened, opens in center of screen
+        orderProcessingPage.setLocationRelativeTo(null); //When opened, opens in center of screen
         orderProcessingPage.setLayout(new java.awt.FlowLayout());
         orderProcessingPage.getContentPane().setBackground(SunDevilGold);
         
@@ -78,7 +78,10 @@ public class orderProcessingPage extends homePage implements ActionListener{
             //order Logic
             System.out.println("SEARCH PRESSED");
             orderToBeSearched = orderMonth + "/" + orderDay + "/" + orderYear;
-            System.out.println(orderToBeSearched);    
+            System.out.println(orderToBeSearched);  
+            this.dispose();  
+            orderProcessingPage.dispose();
+            new previousOrderPage();
         }
 
 

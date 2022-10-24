@@ -149,6 +149,7 @@ public class homePage extends JFrame implements ActionListener{
         
             if(e.getSource() == orderProcessingPersonButton){
                 System.out.println("OrderProccessPAGE");
+                this.dispose();
                 orderProcessingPage newProcessingPage = new orderProcessingPage();
                 this.dispose();
             }
