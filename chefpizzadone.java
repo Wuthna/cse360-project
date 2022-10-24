@@ -21,7 +21,8 @@ public class chefpizzadone extends chefPage implements ActionListener{
         //initialize pizza text field
         pizzaTextField.setBounds(150, 150, 420, 50);
         pizzaTextField.addActionListener(this);
-        pizzaTextField.setText("Pizza status is set to READY!! Confirmation email has been sent to the customer.");
+        pizzaTextField.setEditable(false);
+        pizzaTextField.setText("Pizza status is set to READY!! Confirmation email has been sent .");
         
         chefpizzadone.setVisible(true); //makes frame visible
         chefpizzadone.setTitle("Pickup"); //sets title
