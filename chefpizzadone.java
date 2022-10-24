@@ -15,7 +15,7 @@ public class chefpizzadone extends chefPage implements ActionListener{
 
     
     chefpizzadone(){
-        //this.dispose();
+        this.dispose();
         System.out.println("Your pizza is ready!");
 
         //initialize pizza text field

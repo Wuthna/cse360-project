@@ -9,6 +9,7 @@ public class chefPage extends homePage implements ActionListener {
 
     JButton pizzareadyButton = new JButton();
 
+    
     JLabel chefTitle = new JLabel();
     JLabel pizzaLabel = new JLabel();
 
@@ -20,29 +21,29 @@ public class chefPage extends homePage implements ActionListener {
         System.out.println("Welcome to Chef view");
 
         // initialize the checkbox
-        pizzaCheckBox.setBounds(150, 150, 420, 50);
+        pizzaCheckBox.setBounds(100, 150, 500, 50);
         pizzaCheckBox.addActionListener(this);
-        pizzaCheckBox.setText("ORDER NUMBER 1 COOKING");
+        pizzaCheckBox.setText("ORDER NUMBER 1");
         pizzaCheckBox.setFocusable(false);
-        pizzaCheckBox.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 15));
+        pizzaCheckBox.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 12));
 
         pizzareadyButton.addActionListener(this);
         pizzareadyButton.setText("pizzaready");
         pizzareadyButton.setBounds(460, 300, 100, 30);
 
-        chefTitle.setText("Chef View");
+        chefTitle.setText("Pizza Status set to Preparing");
         chefTitle.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 30));
         chefTitle.setForeground(Color.WHITE);
-        chefTitle.setBounds(30, 9, 250, 30);
+        chefTitle.setBounds(30, 9, 400, 30);
 
-        pizzaLabel.setText("Set Pizza to Ready:");
+        pizzaLabel.setText("Uncooked Orders:");
         pizzaLabel.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 30));
         pizzaLabel.setForeground(Color.WHITE);
         pizzaLabel.setBounds(30, 80, 300, 30);
 
         // PAGE BUILDING
         chefPage.setVisible(true); // makes frame visible
-        chefPage.setTitle("CART"); // sets title
+        chefPage.setTitle("Chef View"); // sets title
         chefPage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // sets exit to close app
         chefPage.setResizable(false); // makes GUI ajustable
         chefPage.setSize(700, 400); // setse starting dimentions
@@ -62,7 +63,7 @@ public class chefPage extends homePage implements ActionListener {
 
         if (e.getSource() == pizzareadyButton) {
 
-            chefpizzadone pizzadone = new chefpizzadone();
+            chefStartCooking pizzadone = new chefStartCooking();
             chefPage.dispose();
             this.dispose();
         }
