@@ -20,6 +20,7 @@ public class homePage extends JFrame implements ActionListener{
     public String printMe = "PRINTED";
 
     JButton chefButton = new JButton();
+    JButton orderProcessingPersonButton = new JButton();
     
     JButton cheeseButton    = new JButton();
     JButton pepperoniButton = new JButton();
@@ -47,6 +48,14 @@ public class homePage extends JFrame implements ActionListener{
     
     homePage() { //creates frame instance
 
+
+        //OPP Button
+        orderProcessingPersonButton.setBounds(810, 20, 150, 50);
+        orderProcessingPersonButton.addActionListener(this);
+        orderProcessingPersonButton.setText("Order Processing");
+
+
+        //Chef Button
         chefButton.setBounds(700, 20, 100, 50);
         chefButton.addActionListener(this);
         chefButton.setText("Chef");
@@ -119,6 +128,8 @@ public class homePage extends JFrame implements ActionListener{
         this.add(menuTitle);
         
         this.add(chefButton);//chef button tab
+        this.add(orderProcessingPersonButton);
+
 
         //FRAME ATTRIBUTES//
         this.getContentPane().setBackground(SunDevilSilver); //sets background to maroon
@@ -136,7 +147,11 @@ public class homePage extends JFrame implements ActionListener{
                 this.dispose();
             }
         
-        
+            if(e.getSource() == orderProcessingPersonButton){
+                System.out.println("OrderProccessPAGE");
+                orderProcessingPage newProcessingPage = new orderProcessingPage();
+                this.dispose();
+            }
             //Pizza Type Actions
             //CHEESE Pizza Button ACTIONS
             if (e.getSource() == cheeseButton && isCheese == false && !isPepperoni && !isVeggie){  //makes sure only one of the Pizzas can be selected at a time
