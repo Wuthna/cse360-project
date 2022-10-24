@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.JTextField;
 
 //import 
 
@@ -13,10 +14,14 @@ public class verifyCheckout extends cartPage implements ActionListener{
 
     JButton enterButton = new JButton();
     JLabel asuIDTitle = new JLabel();
-    JTextField studentIDTextBox = new JTextField(10);
+    // JTextField studentIDTextBox = new JTextField(10);
+    JTextField studentIDTextBox;
+    
 
     verifyCheckout() {
-    this.dispose();
+    //this.dispose();
+
+        studentIDTextBox = new JTextField();
         System.out.println("Verify Checkout");
     
         enterButton.addActionListener(this);
@@ -29,16 +34,22 @@ public class verifyCheckout extends cartPage implements ActionListener{
         asuIDTitle.setBounds(30, 9, 300, 30);
 
 
-        studentIDTextBox.setPreferredSize(new Dimension(100,50));
-        studentIDTextBox.setForeground(SunDevilSilver);
+        //initialize the text box
+        studentIDTextBox.setBounds(30, 50, 300, 30);
+        studentIDTextBox.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 30));
+        studentIDTextBox.setForeground(SunDevilBlack);
+        
+        studentIDTextBox.setCaretColor(SunDevilBlack);
+
+        //studentIDTextBox.setForeground(SunDevilSilver);
         
         //studentIDTextBox.setText("ASU ID");
         //studentIDTextBox.setBackground(SunDevilMaroon);
 
 
-        verifyCheckout.add(enterButton);
-        verifyCheckout.add(asuIDTitle);
-        verifyCheckout.add(studentIDTextBox);
+        // verifyCheckout.add(enterButton);
+        // verifyCheckout.add(asuIDTitle);
+        // verifyCheckout.add(studentIDTextBox);
         verifyCheckout.setVisible(true); //makes frame visible
         verifyCheckout.setTitle("Checkout"); //sets title
         verifyCheckout.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //sets exit to close app
@@ -48,7 +59,9 @@ public class verifyCheckout extends cartPage implements ActionListener{
         verifyCheckout.getContentPane().setBackground(SunDevilGold);
 
         verifyCheckout.getContentPane().setLayout(null); //absolute positions
-        
+        verifyCheckout.add(enterButton);
+        verifyCheckout.add(asuIDTitle);
+        verifyCheckout.add(studentIDTextBox);
     }
 
 

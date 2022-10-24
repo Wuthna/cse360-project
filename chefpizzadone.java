@@ -15,13 +15,13 @@ public class chefpizzadone extends chefPage implements ActionListener{
 
     
     chefpizzadone(){
-        this.dispose();
+        //this.dispose();
         System.out.println("Your pizza is ready!");
 
         //initialize pizza text field
         pizzaTextField.setBounds(150, 150, 420, 50);
         pizzaTextField.addActionListener(this);
-        pizzaTextField.setText("Pizza is ready! confimration email has been sent to your @asu.edu email");
+        pizzaTextField.setText("Pizza status is set to READY!! Confirmation email has been sent to the customer.");
         
         chefpizzadone.setVisible(true); //makes frame visible
         chefpizzadone.setTitle("Pickup"); //sets title
