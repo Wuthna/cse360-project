@@ -12,7 +12,6 @@ public class waitTimePage extends cartPage implements ActionListener{
     JLabel acceptedOrderLabel = new JLabel();
     JLabel waitTimeLabel = new JLabel();
     int estWaitTime;
-    pizza newPizza = new pizza();
     waitTimePage() {
         super();
         acceptedOrderLabel.setText("Your Order Has Been Accepted");
