@@ -32,7 +32,7 @@ public class homePage extends JFrame implements ActionListener{
     JButton extracheeseButton = new JButton();
 
     JButton addToCartButton = new JButton();
-    String addToCart       = "ORDER =";
+    String addToCart="";
     public String foo_cart = "";
 
     JLabel menuTitle = new JLabel();
@@ -140,7 +140,6 @@ public class homePage extends JFrame implements ActionListener{
         @Override
         public void actionPerformed(java.awt.event.ActionEvent e) {
         
-        
             if(e.getSource() == chefButton){
                 System.out.println("Chef Button Pressed");
                 chefPage chef = new chefPage();
@@ -161,6 +160,7 @@ public class homePage extends JFrame implements ActionListener{
             } else if (e.getSource() == cheeseButton && isCheese == true ){
                 isCheese = false;
                 System.out.println("Is now not cheese");
+                //newPizza.type = "none";
             }
             //PEPPERONI Pizza Button ACTIONS
             if (e.getSource() == pepperoniButton && isPepperoni == false && !isCheese && !isVeggie){//makes sure only one of the Pizzas can be selected at a time
@@ -169,6 +169,7 @@ public class homePage extends JFrame implements ActionListener{
             } else if (e.getSource() == pepperoniButton && isPepperoni == true){
                 isPepperoni = false;
                 System.out.println("Is now not pepperoni");
+                //newPizza.type = "none";
             }
             //VEGGIE Pizza Button ACTIONS
              if (e.getSource() == veggieButton && isVeggie == false && !isCheese && !isPepperoni){//makes sure only one of the Pizzas can be selected at a time
@@ -187,6 +188,7 @@ public class homePage extends JFrame implements ActionListener{
             } else if (e.getSource() == mushroomsButton && isMusroom == true){
                 isMusroom = false;
                 System.out.println("Mushrooms has been removed");
+                
             }
             //Onions
             if (e.getSource() == onionsButton && isOnions == false){
@@ -222,13 +224,13 @@ public class homePage extends JFrame implements ActionListener{
                 //go throught all options to see if theyre in the order
 
                 if(isCheese){
-                    addToCart += " Cheese Pizza with ";
+                    addToCart += " Cheese Pizza: ";
                 }
                 if (isPepperoni){
-                    addToCart += " Pepperoni Pizza with ";
+                    addToCart += " Pepperoni Pizza: ";
                 }
                 if (isVeggie){
-                    addToCart += " Veggie Pizza with ";
+                    addToCart += " Veggie Pizza: ";
                 }
                 if (isMusroom){
                     addToCart += " Mushrooms, ";
@@ -245,9 +247,9 @@ public class homePage extends JFrame implements ActionListener{
                 System.out.println(addToCart); //prints the cart
                 foo_cart = addToCart;
                 System.out.println("foo cart" + foo_cart);
-                addToCart = ""; //clears the order so you dont get it incrimented
+                //addToCart = ""; //clears the order so you dont get it incrimented
                 this.dispose();
-                cartPage newCart = new cartPage();//OPENES CART Window
+                cartPage newCart = new cartPage(addToCart);//OPENES CART Window
 
         }
     }
