@@ -1,6 +1,7 @@
 
 //package GUI;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
@@ -12,8 +13,7 @@ public class cartPage extends homePage implements ActionListener{
     //instance variables
     static JFrame cartPage = new JFrame();
 
-    JButton checkoutButton = new JButton();
-
+    JButton checkoutButton = new JButton(new ImageIcon(new ImageIcon(getClass().getResource("checkout.png")).getImage().getScaledInstance(400, 100, Image.SCALE_DEFAULT)));
     JLabel cartTitle = new JLabel();
     JLabel pizzaLabel = new JLabel();
     JLabel toppingsLabel = new JLabel();
@@ -30,7 +30,10 @@ public class cartPage extends homePage implements ActionListener{
         System.out.println("CART SUCCESS");
 
         checkoutButton.addActionListener(this);
-        checkoutButton.setText("Checkout");
+        checkoutButton.setOpaque(false);
+        checkoutButton.setContentAreaFilled(false);
+        checkoutButton.setBorderPainted(false);
+        //checkoutButton.setText("Checkout");
         checkoutButton.setBounds(150,250, 400, 100);
 
         
@@ -39,7 +42,11 @@ public class cartPage extends homePage implements ActionListener{
         cartTitle.setForeground(Color.WHITE);
         cartTitle.setBounds(30, 9, 100, 30);
 
-        pizzaLabel.setText("Pizza: " + f[0]);
+
+        pizzaLabel.setText("Pizza:         " + f[0].split(" ")[1]);
+
+        //pizzaLabel.setText("Pizza: " + f[0]);
+
         pizzaLabel.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 20));
         pizzaLabel.setForeground(Color.WHITE);
         pizzaLabel.setBounds(117, 80, 300, 30);
@@ -48,7 +55,6 @@ public class cartPage extends homePage implements ActionListener{
         toppingsLabel.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 20));
         toppingsLabel.setForeground(Color.WHITE);
         toppingsLabel.setBounds(117, 110, 500, 50);
-
 
 
         //PAGE BUILDING
@@ -62,9 +68,6 @@ public class cartPage extends homePage implements ActionListener{
         cartPage.add(cartTitle);
         cartPage.add(pizzaLabel);
         cartPage.add(toppingsLabel);
-
-
-
         cartPage.add(checkoutButton);
 
 
