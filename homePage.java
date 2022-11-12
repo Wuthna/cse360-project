@@ -2,11 +2,14 @@
 
 //package GUI;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
+import javax.swing.text.html.ImageView;
 import javax.swing.*;
-import javax.swing.JFrame;
 
 
 
@@ -30,6 +33,9 @@ public class homePage extends JFrame implements ActionListener{
     JLabel chefImage = new JLabel(new ImageIcon(new ImageIcon(getClass().getResource("chef.png")).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT)));
     JLabel orderProcessingImage = new JLabel(new ImageIcon(new ImageIcon(getClass().getResource("orderProcessing.png")).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT)));
 
+    
+    //declaring buttons
+
     JButton chefButton = new JButton();
     JButton orderProcessingPersonButton = new JButton();
     
@@ -43,12 +49,9 @@ public class homePage extends JFrame implements ActionListener{
     JButton extracheeseButton = new JButton();
 
 
-    JButton addToCartButton = new JButton(new ImageIcon(new ImageIcon(getClass().getResource("checkout.png")).getImage().getScaledInstance(500, 100, Image.SCALE_DEFAULT)));
-    String addToCart       = "ORDER =";
-//=======
-    //JButton addToCartButton = new JButton();
-    //String addToCart="";
-//========
+    JButton addToCartButton = new JButton();
+    String addToCart       = "";
+
     public String foo_cart = "";
 
     JLabel menuTitle = new JLabel();
@@ -61,79 +64,94 @@ public class homePage extends JFrame implements ActionListener{
     boolean isOnions      = false;
     boolean isOlives      = false;
     boolean isExtraCheese = false;
+    int numberOfToppings = 0;
     
     homePage() { //creates frame instance
 
 
         //OPP Button
-        orderProcessingImage.setBounds(825, 400, 100, 100);
-        orderProcessingPersonButton.setBounds(810, 20, 150, 50);
+
+    	orderProcessingImage.setBounds(825, 400, 100, 100);
+        orderProcessingPersonButton.setBounds(800, 525, 150, 50);
+
         orderProcessingPersonButton.addActionListener(this);
         orderProcessingPersonButton.setText("Order Processing");
 
-
         //Chef Button
         chefImage.setBounds(40, 425, 100, 100);
-        chefButton.setBounds(700, 20, 100, 50);
+
+        chefButton.setBounds(45, 525, 100, 50);
         chefButton.addActionListener(this);
         chefButton.setText("Chef");
     
-        // PIZZA CHOICES
-        //Cheese Pizza Button         
-        cheeseImage.setBounds(125, 75, 100, 100);
-        cheeseButton.setBounds(50,100,250,100);
+     // PIZZA CHOICES
+        //Cheese Pizza Button
+        cheeseImage.setBounds(125, 75, 100, 100); 
+        cheeseButton.setBounds(50,175,250,25);
+
         cheeseButton.addActionListener(this); 
         cheeseButton.setText("CHEESE");
 
 
         //Pepperoni Pizza Button
         pepperoniImage.setBounds(450, 75, 100, 100);
-        pepperoniButton.setBounds(375,100,250,100);
+
+        pepperoniButton.setBounds(375,175,250, 25);
+
         pepperoniButton.addActionListener(this); 
         pepperoniButton.setText("PEPPERONI");
 
         //Veggie Pizza Button
         veggieImage.setBounds(775, 75, 100, 100);
-        veggieButton.setBounds(700,100,250,100);
+
+        veggieButton.setBounds(700,175,250,25);
+
         veggieButton.addActionListener(this); 
         veggieButton.setText("VEGGIE");
 
     //TOPPINGS
         //Mushrooms
         mushroomImage.setBounds(365, 200, 100, 100);
-        mushroomsButton.setBounds(333,250,150,100);
+
+        mushroomsButton.setBounds(333,300,150,25);
+
         mushroomsButton.addActionListener(this); 
-        mushroomsButton.setText("Mushroom");
+        mushroomsButton.setText("MUSHROOM");
     
         //Onions
         onionImage.setBounds(545, 200, 100, 100);
-        onionsButton.setBounds(517,250,150,100);
+
+        onionsButton.setBounds(517,300,150,25);
+
         onionsButton.addActionListener(this); 
-        onionsButton.setText("Onion");
+        onionsButton.setText("ONION");
 
         //Olives
         oliveImage.setBounds(365, 320, 100, 100);
-        olivesButton.setBounds(333,360,150,100);
+
+        olivesButton.setBounds(333,420,150,25);
+
         olivesButton.addActionListener(this); 
-        olivesButton.setText("Olive");
+        olivesButton.setText("OLIVES");
 
         //Extra Cheese
         extraCheeseImage.setBounds(545, 320, 100, 100);
-        extracheeseButton.setBounds(517,360,150,100);
+
+        extracheeseButton.setBounds(517,420,150,25);
+
         extracheeseButton.addActionListener(this); 
         extracheeseButton.setText("EXTRA CHEESE");
 
         addToCartButton.setBounds(250, 500, 500, 100);
-        addToCartButton.setOpaque(false);
-        addToCartButton.setContentAreaFilled(false);
+
+        addToCartButton.setText("Checkout");
         addToCartButton.addActionListener(this);
-        addToCartButton.setBorderPainted(false);
-        addToCartButton.setText("Check Out");
+
 
         menuTitle.setText("Menu");
         menuTitle.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 40));
         menuTitle.setForeground(Color.WHITE);
-        menuTitle.setBounds(30, 9, 100, 100);
+        menuTitle.setBounds(450, 0, 100, 100);
 
         //FRAME LOGIC//
         this.setVisible(true); //makes frame visible
@@ -220,9 +238,11 @@ public class homePage extends JFrame implements ActionListener{
             //Mushrooms
             if (e.getSource() == mushroomsButton && isMusroom == false){
                 isMusroom = true;
+                numberOfToppings++;
                 System.out.println("Mushrooms has been added");
             } else if (e.getSource() == mushroomsButton && isMusroom == true){
                 isMusroom = false;
+                numberOfToppings--;
                 System.out.println("Mushrooms has been removed");
                 
             }
@@ -260,13 +280,15 @@ public class homePage extends JFrame implements ActionListener{
                 //go throught all options to see if theyre in the order
 
                 if(isCheese){
-                    addToCart += " Cheese Pizza: ";
+
+                    addToCart += " Cheese Pizza with: ";
                 }
                 if (isPepperoni){
-                    addToCart += " Pepperoni Pizza: ";
+                    addToCart += " Pepperoni Pizza with: ";
                 }
                 if (isVeggie){
-                    addToCart += " Veggie Pizza: ";
+                    addToCart += " Veggie Pizza with: ";
+
                 }
                 if (isMusroom){
                     addToCart += " Mushrooms, ";
@@ -283,8 +305,11 @@ public class homePage extends JFrame implements ActionListener{
                 System.out.println(addToCart); //prints the cart
                 foo_cart = addToCart;
                 System.out.println("foo cart" + foo_cart);
-                //addToCart = ""; //clears the order so you dont get it incrimented
+
+                //addToCart = ""; //clears the order so you don't get it incremented
                 this.dispose();
+                System.out.println(numberOfToppings);
+
                 cartPage newCart = new cartPage(addToCart);//OPENES CART Window
 
         }
