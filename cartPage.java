@@ -42,7 +42,11 @@ public class cartPage extends homePage implements ActionListener{
         cartTitle.setForeground(Color.WHITE);
         cartTitle.setBounds(30, 9, 100, 30);
 
+
         pizzaLabel.setText("Pizza:         " + f[0].split(" ")[1]);
+
+        //pizzaLabel.setText("Pizza: " + f[0]);
+
         pizzaLabel.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 20));
         pizzaLabel.setForeground(Color.WHITE);
         pizzaLabel.setBounds(117, 80, 300, 30);
@@ -51,6 +55,7 @@ public class cartPage extends homePage implements ActionListener{
         toppingsLabel.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 20));
         toppingsLabel.setForeground(Color.WHITE);
         toppingsLabel.setBounds(117, 110, 500, 50);
+
 
         //PAGE BUILDING
         cartPage.setVisible(true); //makes frame visible
