@@ -1,6 +1,7 @@
 
 //package GUI;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
@@ -12,20 +13,27 @@ public class cartPage extends homePage implements ActionListener{
     //instance variables
     static JFrame cartPage = new JFrame();
 
-    JButton checkoutButton = new JButton();
-
+    JButton checkoutButton = new JButton(new ImageIcon(new ImageIcon(getClass().getResource("checkout.png")).getImage().getScaledInstance(400, 100, Image.SCALE_DEFAULT)));
     JLabel cartTitle = new JLabel();
     JLabel pizzaLabel = new JLabel();
     JLabel toppingsLabel = new JLabel();
+    String finalOrder;
     
-    cartPage(){
+
+    public cartPage(String x)
+    {
+        this.finalOrder = x;
+        System.out.println(finalOrder);
+        String f[] = finalOrder.split(":");
+        System.out.println(f[0]);
         this.dispose();
         System.out.println("CART SUCCESS");
 
-
-
         checkoutButton.addActionListener(this);
-        checkoutButton.setText("Checkout");
+        checkoutButton.setOpaque(false);
+        checkoutButton.setContentAreaFilled(false);
+        checkoutButton.setBorderPainted(false);
+        //checkoutButton.setText("Checkout");
         checkoutButton.setBounds(150,250, 400, 100);
 
         
@@ -34,17 +42,15 @@ public class cartPage extends homePage implements ActionListener{
         cartTitle.setForeground(Color.WHITE);
         cartTitle.setBounds(30, 9, 100, 30);
 
-        pizzaLabel.setText("Pizza:");
-        pizzaLabel.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 30));
+        pizzaLabel.setText("Pizza:         " + f[0].split(" ")[1]);
+        pizzaLabel.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 20));
         pizzaLabel.setForeground(Color.WHITE);
-        pizzaLabel.setBounds(117, 80, 100, 30);
+        pizzaLabel.setBounds(117, 80, 300, 30);
 
-        toppingsLabel.setText("Toppings:");
-        toppingsLabel.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 30));
+        toppingsLabel.setText("Toppings: "+f[1]);
+        toppingsLabel.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 20));
         toppingsLabel.setForeground(Color.WHITE);
-        toppingsLabel.setBounds(70, 110, 200, 50);
-
-
+        toppingsLabel.setBounds(117, 110, 500, 50);
 
         //PAGE BUILDING
         cartPage.setVisible(true); //makes frame visible
@@ -57,15 +63,17 @@ public class cartPage extends homePage implements ActionListener{
         cartPage.add(cartTitle);
         cartPage.add(pizzaLabel);
         cartPage.add(toppingsLabel);
-
-
-
         cartPage.add(checkoutButton);
 
 
         cartPage.getContentPane().setLayout(null); //absolute position
         System.out.println("here ->" + foo_cart);
     }
+    
+    cartPage(){
+        
+    }
+
 
     @Override
         public void actionPerformed(java.awt.event.ActionEvent e) {
