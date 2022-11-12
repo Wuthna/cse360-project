@@ -20,7 +20,7 @@ public class verifyCheckout extends cartPage implements ActionListener{
 
     verifyCheckout() {
     //this.dispose();
-
+        super();
         studentIDTextBox = new JTextField();
         System.out.println("Verify Checkout");
     

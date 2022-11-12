@@ -12,9 +12,8 @@ public class waitTimePage extends cartPage implements ActionListener{
     JLabel acceptedOrderLabel = new JLabel();
     JLabel waitTimeLabel = new JLabel();
     int estWaitTime;
-
     waitTimePage() {
-
+        super();
         acceptedOrderLabel.setText("Your Order Has Been Accepted");
         acceptedOrderLabel.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 30));
         acceptedOrderLabel.setForeground(Color.WHITE);

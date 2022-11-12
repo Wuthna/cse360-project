@@ -17,12 +17,17 @@ public class cartPage extends homePage implements ActionListener{
     JLabel cartTitle = new JLabel();
     JLabel pizzaLabel = new JLabel();
     JLabel toppingsLabel = new JLabel();
+    String finalOrder;
     
-    cartPage(){
+
+    public cartPage(String x)
+    {
+        this.finalOrder = x;
+        System.out.println(finalOrder);
+        String f[] = finalOrder.split(":");
+        System.out.println(f[0]);
         this.dispose();
         System.out.println("CART SUCCESS");
-
-
 
         checkoutButton.addActionListener(this);
         checkoutButton.setText("Checkout");
@@ -34,15 +39,15 @@ public class cartPage extends homePage implements ActionListener{
         cartTitle.setForeground(Color.WHITE);
         cartTitle.setBounds(30, 9, 100, 30);
 
-        pizzaLabel.setText("Pizza:");
-        pizzaLabel.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 30));
+        pizzaLabel.setText("Pizza: " + f[0]);
+        pizzaLabel.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 20));
         pizzaLabel.setForeground(Color.WHITE);
-        pizzaLabel.setBounds(117, 80, 100, 30);
+        pizzaLabel.setBounds(117, 80, 300, 30);
 
-        toppingsLabel.setText("Toppings:");
-        toppingsLabel.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 30));
+        toppingsLabel.setText("Toppings: "+f[1]);
+        toppingsLabel.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 20));
         toppingsLabel.setForeground(Color.WHITE);
-        toppingsLabel.setBounds(70, 110, 200, 50);
+        toppingsLabel.setBounds(117, 110, 500, 50);
 
 
 
@@ -66,6 +71,11 @@ public class cartPage extends homePage implements ActionListener{
         cartPage.getContentPane().setLayout(null); //absolute position
         System.out.println("here ->" + foo_cart);
     }
+    
+    cartPage(){
+        
+    }
+
 
     @Override
         public void actionPerformed(java.awt.event.ActionEvent e) {
