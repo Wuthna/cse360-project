@@ -22,7 +22,11 @@ public class homePage extends JFrame implements ActionListener{
 
     public String printMe = "PRINTED";
     
+    //put images from image folder and set them to jLabels
+   
+ 
     //retrieving images and put them in a JLabel 
+    
     JLabel pepperoniImage = new JLabel(new ImageIcon(new ImageIcon(getClass().getResource("pepperoni.png")).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT)));
     JLabel cheeseImage = new JLabel(new ImageIcon(new ImageIcon(getClass().getResource("cheese.png")).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT))); 
     JLabel veggieImage = new JLabel(new ImageIcon(new ImageIcon(getClass().getResource("veggie.png")).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT))); 
