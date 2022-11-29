@@ -1,4 +1,6 @@
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
@@ -6,12 +8,11 @@ import javax.swing.*;
 public class chefPage extends homePage implements ActionListener {
     // instance variables
     static JFrame chefPage = new JFrame();
-
     JButton pizzareadyButton = new JButton();
-
-    
     JLabel chefTitle = new JLabel();
+    JLabel menuTitle = new JLabel("SunDevil Pizza", JLabel.LEFT);
     JLabel pizzaLabel = new JLabel();
+    JLabel asuImage4 = new JLabel(new ImageIcon(new ImageIcon(getClass().getResource("asu.png")).getImage().getScaledInstance(175, 75, Image.SCALE_DEFAULT)));
 
     // todo implement a checkbox of orders recieved from the original home menu
     JCheckBox pizzaCheckBox = new JCheckBox();
@@ -21,25 +22,49 @@ public class chefPage extends homePage implements ActionListener {
         System.out.println("Welcome to Chef view");
 
         // initialize the checkbox
-        pizzaCheckBox.setBounds(100, 150, 500, 50);
+        pizzaCheckBox.setBounds(50, 130, 600, 50);
         pizzaCheckBox.addActionListener(this);
         pizzaCheckBox.setText("ORDER NUMBER 1");
         pizzaCheckBox.setFocusable(false);
-        pizzaCheckBox.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 12));
+        pizzaCheckBox.setBackground(Color.WHITE);
+        pizzaCheckBox.setFont(new java.awt.Font(Font.SANS_SERIF, java.awt.Font.PLAIN, 12));
 
+        //pizza being prepared button
         pizzareadyButton.addActionListener(this);
-        pizzareadyButton.setText("pizzaready");
-        pizzareadyButton.setBounds(460, 300, 100, 30);
+        pizzareadyButton.setText("Preparing");
+        pizzareadyButton.setBounds(300, 300, 100, 30);
+        pizzareadyButton.setBackground(SunDevilGold);
+        pizzareadyButton.setForeground(SunDevilBlack);
+        pizzareadyButton.setBorder(blackBrdr);
 
-        chefTitle.setText("Pizza Status set to Preparing");
-        chefTitle.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 30));
-        chefTitle.setForeground(Color.WHITE);
-        chefTitle.setBounds(30, 9, 400, 30);
+        //asu image line 
+        asuImage4.setBounds(0,0, 200, 50);
+        asuImage4.setBackground(Color.WHITE);
+        asuImage4.setOpaque(true);
+        
+        //menu title 
+        menuTitle.setBounds(200, 0, 500, 50);
+        menuTitle.setFont(new java.awt.Font(Font.SANS_SERIF, java.awt.Font.BOLD, 40));
+        menuTitle.setOpaque(true);
+        menuTitle.setBackground(Color.WHITE);
+        
+//        //pizza status
+//        chefTitle.setText("Pizza Status: Preparing");
+//        chefTitle.setFont(new java.awt.Font(Font.SANS_SERIF, java.awt.Font.PLAIN, 25));
+//        chefTitle.setBackground(SunDevilBlack);
+//        chefTitle.setForeground(Color.WHITE);
+//        chefTitle.setOpaque(true);
+//        chefTitle.setBorder(blackBrdr);
+//        chefTitle.setBounds(50, 100, 600, 30);
 
-        pizzaLabel.setText("Uncooked Orders:");
-        pizzaLabel.setFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 30));
+        //orders 
+        pizzaLabel.setText("Preparing Orders");
+        pizzaLabel.setFont(new java.awt.Font(Font.SANS_SERIF, java.awt.Font.PLAIN, 20));
         pizzaLabel.setForeground(Color.WHITE);
-        pizzaLabel.setBounds(30, 80, 300, 30);
+        pizzaLabel.setBackground(SunDevilBlack);
+        pizzaLabel.setOpaque(true);
+        pizzaLabel.setBorder(blackBrdr);
+        pizzaLabel.setBounds(50, 100, 600, 30);
 
         // PAGE BUILDING
         chefPage.setVisible(true); // makes frame visible
@@ -49,7 +74,9 @@ public class chefPage extends homePage implements ActionListener {
         chefPage.setSize(700, 400); // setse starting dimentions
         chefPage.setLocationRelativeTo(null); // When opened, opens in center of screen
         chefPage.getContentPane().setBackground(SunDevilMaroon);
-        chefPage.add(chefTitle);
+        //chefPage.add(chefTitle);
+        chefPage.add(menuTitle);
+        chefPage.add(asuImage4);
         chefPage.add(pizzaLabel);
         chefPage.add(pizzaCheckBox);
         chefPage.add(pizzareadyButton);
